@@ -2,12 +2,11 @@ package com.projects.annotations;
 
 import org.apache.log4j.Logger;
 
-public class Controller implements AbstractClass {
+public class Controller implements IAbstractClass {
 
    static Logger logger = Logger.getLogger(Controller.class);
 
-   public Controller() {
-   }
+   public Controller() { }
 
    /**
     * Create the controller file and class

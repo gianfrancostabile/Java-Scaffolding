@@ -5,8 +5,8 @@ import org.apache.log4j.Logger;
 public class AbstractClassFactory {
    static Logger logger = Logger.getLogger(AbstractClassFactory.class);
 
-   public static AbstractClass build(Scaffolding.Type type) {
-      AbstractClass clazz = null;
+   public static IAbstractClass build(Scaffolding.Type type) {
+      IAbstractClass clazz = null;
       switch (type) {
          case ALL: {
             clazz = new All();

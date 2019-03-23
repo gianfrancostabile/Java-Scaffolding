@@ -1,6 +1,6 @@
 package com.projects.annotations;
 
-interface AbstractClass {
+interface IAbstractClass {
    /**
     * Create the corresponding file.
     */

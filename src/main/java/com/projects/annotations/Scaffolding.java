@@ -15,10 +15,10 @@ public @interface Scaffolding {
   /**
    * Prefix of class name
    */
-  String name() default "";
+  String name();
 
   /**
    * Type of file to create
    */
-  Type type();
+  Type type() default Type.ALL;
 }

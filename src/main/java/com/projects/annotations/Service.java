@@ -2,12 +2,11 @@ package com.projects.annotations;
 
 import org.apache.log4j.Logger;
 
-public class Service implements AbstractClass {
+public class Service implements IAbstractClass {
 
    static Logger logger = Logger.getLogger(Controller.class);
 
-   public Service() {
-   }
+   public Service() { }
 
    /**
     * Create the service file and class

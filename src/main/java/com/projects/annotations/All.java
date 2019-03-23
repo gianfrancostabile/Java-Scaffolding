@@ -2,12 +2,11 @@ package com.projects.annotations;
 
 import org.apache.log4j.Logger;
 
-public class All implements AbstractClass{
+public class All implements IAbstractClass {
 
    static Logger logger = Logger.getLogger(All.class);
 
-   public All() {
-   }
+   public All() { }
 
    /**
     * Create all the files and their classes
