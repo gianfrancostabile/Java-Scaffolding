@@ -8,17 +8,17 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Scaffolding {
-  enum Type {
-    CONTROLLER, SERVICE, REPOSITORY, ALL
-  }
+   enum Type {
+      CONTROLLER, SERVICE, REPOSITORY, ALL
+   }
 
-  /**
-   * Prefix of class name
-   */
-  String name();
+   /**
+    * Prefix of class name
+    */
+   String name();
 
-  /**
-   * Type of file to create
-   */
-  Type type() default Type.ALL;
+   /**
+    * Type of file to create
+    */
+   Type type() default Type.ALL;
 }

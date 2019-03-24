@@ -1,20 +1,20 @@
-package com.projects.annotations;
+package com.projects.utilities;
 
-class Utils {
+public class Utils {
    /**
-    * Parse url format from File to Class.forName() format requirement.
-    *
+    * Parses url format from File to Class.forName() format requirement
+    * <p>
     * TODO search a better solution
     *
     * @param path : Path to parse
     * @return Path parsed
     */
-   static String parsePath(String path) {
+   public static String parsePath(String path) {
       // Parse '\' to '.'
       path = path.replace("\\", ".");
       // Remove everything behind 'com'
       int index = path.indexOf(".com.");
-      path = path.substring(index+1);
+      path = path.substring(index + 1);
       // Remove the .class or .java extension
       path = path.replaceAll("((\\.java)|(\\.class))$", "");
       return path;
