@@ -1,35 +1,28 @@
 package com.projects.builders;
 
+import com.projects.utilities.ApplicationStore;
 import org.apache.log4j.Logger;
 
 public class All extends AbstractClass {
 
    static Logger logger = Logger.getLogger(All.class);
 
+   private Repository repository = (Repository) ApplicationStore.get(Repository.class);
+   private Service service = (Service) ApplicationStore.get(Service.class);
+   private Controller controller = (Controller) ApplicationStore.get(Controller.class);
+
    public All() {
    }
 
    /**
-    * Builds a complete class
+    * Build controller, service and repository to the class
+    *
+    * @param clazz The class that will be builded
     */
    @Override
-   public void build() {
-
-   }
-
-   /**
-    * Builds all class's methods
-    */
-   @Override
-   public void buildMethods() {
-
-   }
-
-   /**
-    * Builds all class's attributes
-    */
-   @Override
-   public void buildAttributes() {
-
+   public void build(Class<?> clazz) {
+      repository.build(clazz);
+      service.build(clazz);
+      controller.build(clazz);
    }
 }

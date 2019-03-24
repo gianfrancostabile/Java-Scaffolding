@@ -1,10 +1,13 @@
 package com.projects.builders;
 
 public interface IBuildClass {
+
    /**
     * Builds a complete class
+    *
+    * @param clazz The class that will be builded
     */
-   void build();
+   void build(Class<?> clazz);
 
    /**
     * Builds class declaration and constructors
@@ -22,6 +25,7 @@ public interface IBuildClass {
 
    /**
     * Builds method declaration
+    *
     * @param definitionDTO
     */
    void buildMethod(DefinitionDTO definitionDTO);
@@ -33,6 +37,7 @@ public interface IBuildClass {
 
    /**
     * Builds attribute definition
+    *
     * @param definitionDTO
     */
    void buildAttribute(DefinitionDTO definitionDTO);

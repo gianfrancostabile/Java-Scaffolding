@@ -1,4 +1,4 @@
-package com.projects.annotations;
+package com.projects.scaffolding;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
@@ -8,10 +8,6 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Scaffolding {
-   enum Type {
-      CONTROLLER, SERVICE, REPOSITORY, ALL
-   }
-
    /**
     * Prefix of class name
     */
@@ -20,5 +16,5 @@ public @interface Scaffolding {
    /**
     * Type of file to create
     */
-   Type type() default Type.ALL;
+   ScaffoldingType type() default ScaffoldingType.ALL;
 }

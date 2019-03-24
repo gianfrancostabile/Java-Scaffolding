@@ -1,7 +1,7 @@
-package com.projects.annotations;
+package com.projects.scaffolding;
 
-import com.projects.builders.AbstractClassFactory;
 import com.projects.builders.AbstractClass;
+import com.projects.builders.AbstractClassFactory;
 import com.projects.utilities.Utils;
 import org.apache.log4j.Logger;
 
@@ -17,15 +17,14 @@ public class Processor {
 
    /**
     * Scaffolding processor
-    *
+    * <p>
     * TODO
     */
    public void process() {
       try {
          List<Class<?>> clazzList = this.getClassFromPath("src/main/java/com/projects/pojo");
          for (Class clazz : clazzList) {
-            logger.debug(clazz.getName());
-            generate((Scaffolding) clazz.getAnnotation(Scaffolding.class));
+            generate(clazz);
          }
       } catch (Exception e) {
          logger.error(e.getStackTrace(), e);
@@ -37,7 +36,7 @@ public class Processor {
     *
     * @param path Folder path to analyze
     * @return List of classes that match with Scaffolding Annotation
-    * @throws NullPointerException  path null
+    * @throws NullPointerException   path null
     * @throws ClassNotFoundException
     */
    private List<Class<?>> getClassFromPath(String path) throws NullPointerException, ClassNotFoundException {
@@ -67,10 +66,11 @@ public class Processor {
     * <p>
     * TODO
     *
-    * @param scaffolding
+    * @param clazz
     */
-   private void generate(Scaffolding scaffolding) {
-      AbstractClass IAbstractClass = AbstractClassFactory.build(scaffolding.type());
-      IAbstractClass.build();
+   private void generate(Class<?> clazz) {
+      Scaffolding scaffolding = clazz.getAnnotation(Scaffolding.class);
+      AbstractClass abstractClass = AbstractClassFactory.build(scaffolding.type());
+      abstractClass.build(clazz);
    }
 }

@@ -1,6 +1,6 @@
 package com.projects.pojo;
 
-import com.projects.annotations.Scaffolding;
+import com.projects.scaffolding.Scaffolding;
 
 @Scaffolding(name = "Alumn")
 public class Alumn extends Person {

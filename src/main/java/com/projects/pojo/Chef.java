@@ -1,7 +1,8 @@
 package com.projects.pojo;
 
-import com.projects.annotations.Scaffolding;
+import com.projects.scaffolding.Scaffolding;
+import com.projects.scaffolding.ScaffoldingType;
 
-@Scaffolding(name = "Chef", type = Scaffolding.Type.SERVICE)
+@Scaffolding(name = "Chef", type = ScaffoldingType.SERVICE)
 public class Chef extends Person {
 }

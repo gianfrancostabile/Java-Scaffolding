@@ -20,9 +20,17 @@ public class DefinitionDTO {
       this.setName("");
    }
 
+   public AccessLevel getAccessLevel() {
+      return this.accessLevel;
+   }
+
    public DefinitionDTO setAccessLevel(AccessLevel accessLevel) {
       this.accessLevel = accessLevel;
       return this;
+   }
+
+   public boolean isStatic() {
+      return this.isStatic;
    }
 
    public DefinitionDTO setStatic(boolean isStatic) {
@@ -30,9 +38,17 @@ public class DefinitionDTO {
       return this;
    }
 
+   public boolean isFinal() {
+      return this.isFinal;
+   }
+
    public DefinitionDTO setFinal(boolean isFinal) {
       this.isFinal = isFinal;
       return this;
+   }
+
+   public boolean isAbstract() {
+      return this.isAbstract;
    }
 
    public DefinitionDTO setAbstract(boolean isAbstract) {
@@ -40,28 +56,12 @@ public class DefinitionDTO {
       return this;
    }
 
+   public String getName() {
+      return this.name;
+   }
+
    public DefinitionDTO setName(String name) {
       this.name = name;
       return this;
-   }
-
-   public AccessLevel getAccessLevel() {
-      return this.accessLevel;
-   }
-
-   public boolean isStatic() {
-      return this.isStatic;
-   }
-
-   public boolean isFinal() {
-      return this.isFinal;
-   }
-
-   public boolean isAbstract() {
-      return this.isAbstract;
-   }
-
-   public String getName() {
-      return this.name;
    }
 }

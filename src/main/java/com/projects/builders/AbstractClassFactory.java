@@ -1,28 +1,29 @@
 package com.projects.builders;
 
-import com.projects.annotations.Scaffolding;
+import com.projects.scaffolding.ScaffoldingType;
+import com.projects.utilities.ApplicationStore;
 import org.apache.log4j.Logger;
 
 public class AbstractClassFactory {
    static Logger logger = Logger.getLogger(AbstractClassFactory.class);
 
-   public static AbstractClass build(Scaffolding.Type type) {
+   public static AbstractClass build(ScaffoldingType type) {
       AbstractClass clazz = null;
       switch (type) {
          case ALL: {
-            clazz = new All();
+            clazz = (All) ApplicationStore.get(All.class);
             break;
          }
          case CONTROLLER: {
-            clazz = new Controller();
+            clazz = (Controller) ApplicationStore.get(Controller.class);
             break;
          }
          case SERVICE: {
-            clazz = new Service();
+            clazz = (Service) ApplicationStore.get(Service.class);
             break;
          }
          case REPOSITORY: {
-            clazz = new Repository();
+            clazz = (Repository) ApplicationStore.get(Repository.class);
             break;
          }
       }
