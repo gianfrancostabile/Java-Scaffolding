@@ -1,6 +1,5 @@
 package com.projects.builders;
 
-import com.projects.scaffolding.Scaffolding;
 import com.projects.scaffolding.ScaffoldingType;
 import org.apache.log4j.Logger;
 
@@ -19,8 +18,7 @@ public class Repository extends AbstractClass {
     */
    @Override
    public void build(Class<?> clazz) {
-      String clazzName = clazz.getAnnotation(Scaffolding.class).name();
-      logger.debug(clazzName.concat(sufix));
+      super.build(clazz);
    }
 
    /**
