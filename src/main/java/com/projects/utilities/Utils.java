@@ -6,7 +6,8 @@ import java.io.File;
 import java.io.IOException;
 
 public class Utils {
-   static Logger logger = Logger.getLogger(Utils.class);
+   private static Logger logger = Logger.getLogger(Utils.class);
+   private static StringArchitect stringArchitect = new StringArchitect(new StringBuilder());
 
    /**
     * Parses url format from File to Class.forName() format requirement
@@ -34,11 +35,9 @@ public class Utils {
     */
    public static File createFile(String folderPath, String fileName) {
       String extension = ".xml";
-      StringBuilder stringBuilder = new StringBuilder();
 
       String fileSeparator = System.getProperty("file.separator");
-      String filePath = stringBuilder.append(folderPath).append(fileSeparator).append(fileName).append(extension).toString();
-      stringBuilder.setLength(0);
+      String filePath = stringArchitect.beginSequence(folderPath).append(fileSeparator).append(fileName).append(extension).toString();
 
       File folder = new File(folderPath);
       if (!folder.exists() || !folder.isDirectory()) {
@@ -47,11 +46,9 @@ public class Utils {
       File newFile = new File(filePath);
       try {
          if (newFile.createNewFile()) {
-            logger.debug(stringBuilder.append(filePath).append(" file created."));
-            stringBuilder.setLength(0);
+            logger.debug(stringArchitect.beginSequence(filePath).append(" file created.").toString());
          } else {
-            logger.debug(stringBuilder.append(filePath).append(" class already exists."));
-            stringBuilder.setLength(0);
+            logger.debug(stringArchitect.beginSequence(filePath).append(" file already exists.").toString());
             newFile = null;
          }
       } catch (IOException ioe) {

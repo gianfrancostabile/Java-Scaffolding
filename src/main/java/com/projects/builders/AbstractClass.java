@@ -1,23 +1,27 @@
 package com.projects.builders;
 
 import com.projects.scaffolding.ScaffoldingType;
+import com.projects.utilities.StringArchitect;
 import com.projects.utilities.Utils;
 import org.apache.log4j.Logger;
 
 import java.io.File;
+import java.io.IOException;
 
 public abstract class AbstractClass implements IBuildClass {
    static Logger logger = Logger.getLogger(AbstractClassFactory.class);
    protected String sufix = ScaffoldingType.ALL.getValue();
-   protected StringBuilder stringBuilder = new StringBuilder();
+   protected StringArchitect stringArchitect = new StringArchitect(new StringBuilder());
 
    private String filePath = "";
    private String fileName = "";
    private String pathToFile = "";
 
    @Override
-   public void build(Class<?> clazz) {
-      this.setPathToFile("src/main/java/com/projects/");
+   public void build(Class<?> clazz) throws IOException {
+      String fileSeparator = System.getProperty("file.separator");
+      this.setPathToFile(stringArchitect.append(".\\src\\main\\java\\com\\projects\\builders").append(fileSeparator)
+         .append("blueprints").append(fileSeparator).toString());
       this.setFileName(clazz.getSimpleName());
 
       File newFile = Utils.createFile(this.getPathToFile(), this.getFileName());
@@ -81,7 +85,6 @@ public abstract class AbstractClass implements IBuildClass {
       AbstractClass that = (AbstractClass) o;
 
       if (sufix != null ? !sufix.equals(that.sufix) : that.sufix != null) return false;
-      if (stringBuilder != null ? !stringBuilder.equals(that.stringBuilder) : that.stringBuilder != null) return false;
       if (getFilePath() != null ? !getFilePath().equals(that.getFilePath()) : that.getFilePath() != null) return false;
       if (getFileName() != null ? !getFileName().equals(that.getFileName()) : that.getFileName() != null) return false;
       return getPathToFile() != null ? getPathToFile().equals(that.getPathToFile()) : that.getPathToFile() == null;
@@ -90,7 +93,6 @@ public abstract class AbstractClass implements IBuildClass {
    @Override
    public int hashCode() {
       int result = sufix != null ? sufix.hashCode() : 0;
-      result = 31 * result + (stringBuilder != null ? stringBuilder.hashCode() : 0);
       result = 31 * result + (getFilePath() != null ? getFilePath().hashCode() : 0);
       result = 31 * result + (getFileName() != null ? getFileName().hashCode() : 0);
       result = 31 * result + (getPathToFile() != null ? getPathToFile().hashCode() : 0);
@@ -102,9 +104,7 @@ public abstract class AbstractClass implements IBuildClass {
    }
 
    public void setFileName(String name) {
-      this.stringBuilder.setLength(0);
-      this.fileName = this.stringBuilder.append(name).append(sufix).toString();
-      this.stringBuilder.setLength(0);
+      this.fileName = this.stringArchitect.beginSequence(name).append(sufix).toString();
    }
 
    public String getPathToFile() {
@@ -112,9 +112,7 @@ public abstract class AbstractClass implements IBuildClass {
    }
 
    public void setPathToFile(String parent) {
-      this.stringBuilder.setLength(0);
-      this.pathToFile = this.stringBuilder.append(parent).append(sufix.toLowerCase()).toString();
-      this.stringBuilder.setLength(0);
+      this.pathToFile = this.stringArchitect.beginSequence(parent).append(sufix.toLowerCase()).toString();
    }
 
    public String getFilePath() {

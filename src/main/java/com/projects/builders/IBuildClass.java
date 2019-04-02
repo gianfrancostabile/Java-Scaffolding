@@ -1,5 +1,7 @@
 package com.projects.builders;
 
+import java.io.IOException;
+
 public interface IBuildClass {
 
    /**
@@ -7,7 +9,7 @@ public interface IBuildClass {
     *
     * @param clazz The class that will be builded
     */
-   void build(Class<?> clazz);
+   void build(Class<?> clazz) throws IOException;
 
    /**
     * Builds class declaration and constructors

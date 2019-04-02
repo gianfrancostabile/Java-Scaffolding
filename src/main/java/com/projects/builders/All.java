@@ -3,6 +3,8 @@ package com.projects.builders;
 import com.projects.utilities.ApplicationStore;
 import org.apache.log4j.Logger;
 
+import java.io.IOException;
+
 public class All extends AbstractClass {
 
    static Logger logger = Logger.getLogger(All.class);
@@ -20,7 +22,7 @@ public class All extends AbstractClass {
     * @param clazz The class that will be builded
     */
    @Override
-   public void build(Class<?> clazz) {
+   public void build(Class<?> clazz) throws IOException {
       repository.build(clazz);
       service.build(clazz);
       controller.build(clazz);

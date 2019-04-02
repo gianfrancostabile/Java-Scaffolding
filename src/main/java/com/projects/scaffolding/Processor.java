@@ -6,6 +6,7 @@ import com.projects.utilities.Utils;
 import org.apache.log4j.Logger;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -69,8 +70,12 @@ public class Processor {
     * @param clazz
     */
    private void generate(Class<?> clazz) {
-      Scaffolding scaffolding = clazz.getAnnotation(Scaffolding.class);
-      AbstractClass abstractClass = AbstractClassFactory.build(scaffolding.type());
-      abstractClass.build(clazz);
+      try {
+         Scaffolding scaffolding = clazz.getAnnotation(Scaffolding.class);
+         AbstractClass abstractClass = AbstractClassFactory.build(scaffolding.type());
+         abstractClass.build(clazz);
+      } catch (IOException ioe) {
+         logger.error(ioe.getMessage(), ioe);
+      }
    }
 }
